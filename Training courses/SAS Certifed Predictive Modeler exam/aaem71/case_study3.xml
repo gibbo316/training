@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace>
+<NODES>
+<NODE COMPONENT="DataSource" DESCRIPTION="CREDIT" DIAGRAMID="_ROOT_" ID="$1" PARENTID="" X="102.0" Y="195.0">
+<PROPERTIES Component="DataSource" ComputeStatistics="N" DataSelection="DATASOURCE" DataSource="CREDIT" DataSourceRole="RAW" Description="" ForceRun="N" Library="AAEM61" NBytes="NaN" NCols="30.0" NObs="3000.0" NewTable="" OutputType="VIEW" Role="RAW" RunAction="Train" Scope="LOCAL" Segment="" Table="CREDIT">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA AttributeName="LEVEL" AttributeValue="BINARY" Variable="BanruptcyInd"/>
+<DELTA AttributeName="LEVEL" AttributeValue="BINARY" Variable="TARGET"/>
+</EmVariableAttributes>
+<EmTargetAttributes>
+<TARGET>
+<DecData Table="EMWS3.Ids_TARGET_DD">
+<Data>
+<Obs COUNT="500.0" DATAPRIOR="0.1666666667" DECISION1="5.99880024" DECISION2="0.0" DECPRIOR="0.0" TARGET="1" TRAINPRIOR="0.1666666667"/>
+<Obs COUNT="2500.0" DATAPRIOR="0.8333333333" DECISION1="0.0" DECISION2="1.2000480019" DECPRIOR="0.0" TARGET="0" TRAINPRIOR="0.8333333333"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="" LENGTH="32" NAME="TARGET" TYPE="C"/>
+<Variable FORMAT="" LABEL="Level Counts" LENGTH="8" NAME="COUNT" TYPE="N"/>
+<Variable FORMAT="" LABEL="Data Proportions" LENGTH="8" NAME="DATAPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Training Proportions" LENGTH="8" NAME="TRAINPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Decision Priors" LENGTH="8" NAME="DECPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="1" LENGTH="8" NAME="DECISION1" TYPE="N"/>
+<Variable FORMAT="" LABEL="0" LENGTH="8" NAME="DECISION2" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS3.Ids_TARGET_DM">
+<Data>
+<Obs COST="" EVENT="" FORMAT="" LABEL="" LEVEL="PROFIT" ORDER="" TYPE="" USE="Y" VARIABLE="" _TYPE_="MATRIX"/>
+<Obs COST="" EVENT="1" FORMAT="" LABEL="" LEVEL="BINARY" ORDER="" TYPE="N" USE="" VARIABLE="TARGET" _TYPE_="TARGET"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Data Prior" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DATAPRIOR" _TYPE_="DATAPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Training Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="TRAINPRIOR" _TYPE_="TRAINPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Decision Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DECPRIOR" _TYPE_="DECPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TARGET=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="P_TARGET1" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TARGET=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="R_TARGET1" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TARGET=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="P_TARGET0" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TARGET=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="R_TARGET0" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="From: TARGET" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="F_TARGET" _TYPE_="FROM"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Into: TARGET" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="I_TARGET" _TYPE_="INTO"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="1" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION1" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="0" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION2" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Decision: TARGET" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="D_TARGET" _TYPE_="MODELDECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Expected Profit: TARGET" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="EP_TARGET" _TYPE_="EXPECTEDPROFIT"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Computed Profit: TARGET" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="CP_TARGET" _TYPE_="COMPUTEDPROFIT"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Best Profit: TARGET" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="BP_TARGET" _TYPE_="BESTPROFIT"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Type" LENGTH="32" NAME="_TYPE_" TYPE="C"/>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="VARIABLE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Label" LENGTH="40" NAME="LABEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Measurement Level" LENGTH="32" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Target Event" LENGTH="32" NAME="EVENT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Order" LENGTH="10" NAME="ORDER" TYPE="C"/>
+<Variable FORMAT="" LABEL="Format" LENGTH="32" NAME="FORMAT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Cost" LENGTH="32" NAME="COST" TYPE="C"/>
+<Variable FORMAT="" LABEL="Use" LENGTH="1" NAME="USE" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</TARGET>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="StatExplore" DESCRIPTION="StatExplore" DIAGRAMID="_ROOT_" ID="$2" PARENTID="" X="262.0" Y="270.0">
+<PROPERTIES BySegment="N" ChiSquare="Y" ChiSquareInterval="N" ChiSquareIntervalNBins="5.0" Component="StatExplore" Correlation="Y" ForceRun="N" HideVariable="Y" MaximumVars="1000.0" NObs="100000" Pearson="Y" RunAction="Train" Spearman="N" UseScore="N" UseTest="" UseValidate="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<CROSSTAB Type="DATA">
+<Data/>
+<Metadata/>
+</CROSSTAB>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Partition" DESCRIPTION="Data Partition" DIAGRAMID="_ROOT_" ID="$3" PARENTID="" X="265.0" Y="195.0">
+<PROPERTIES ClassDistribution="Y" Component="Partition" ForceRun="N" IntervalDistribution="Y" Method="DEFAULT" OutputType="DATA" RandomSeed="12345.0" RunAction="Train" TestPct="0.0" TrainPct="50.0" ValidatePct="50.0">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Impute" DESCRIPTION="Impute" DIAGRAMID="_ROOT_" ID="$4" PARENTID="" X="423.0" Y="195.0">
+<PROPERTIES ABWTuning="9.0" AHUBERTuning="1.5" AWAVETuning="6.2831853072" Component="Impute" DefaultChar="" DefaultNum="NaN" DistributionMissing="N" ForceRun="N" HideVariable="Y" ImputeNoMissing="N" Indicator="UNIQUE" IndicatorRole="INPUT" LeafSize="5.0" MaxPctMissing="50.0" Maxbranch="2.0" Maxdepth="6.0" MethodClass="COUNT" MethodInterval="MEAN" MethodTargetClass="NONE" MethodTargetInterval="NONE" MinCatSize="5.0" Normalize="Y" Nrules="5.0" Nsurrs="2.0" RandomSeed="12345.0" ReplaceVariable="N" RunAction="Train" SpacingProportion="90.0" Splitsize="NaN" ValidateTestMissing="N">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Regression" DESCRIPTION="Regression" DIAGRAMID="_ROOT_" ID="$5" PARENTID="" X="577.0" Y="195.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" ClParm="N" Component="Regression" ConvDefaults="Y" CorB="N" CovB="N" Details="N" Error="LOGISTIC" ExcludedVariable="REJECT" FConvTimes="1.0" FConvValue="0.0" Force="0.0" ForceRun="N" GConvTimes="1.0" GConvValue="1.0E-6" Hierarchy="CLASS" InputCoding="DEVIATION" LinkFunction="LOGIT" MainEffect="Y" MaxCPUTime="1 HOUR" MaxFunctionCalls="NaN" MaxIterations="NaN" MaxStep="NaN" MinResourceUse="N" ModelDefaults="Y" ModelSelection="STEPWISE" OptimizationTechnique="DEFAULT" Performance="N" Polynomial="N" PolynomialDegree="2.0" PrintDesignMatrix="N" Rule="NONE" RunAction="Train" SASSPDS="N" SelectionCriterion="VDECDATA" SelectionDefault="Y" Sequential="N" Simple="N" SlEntry="0.05" SlStay="0.05" Start="0.0" StepOutput="N" Stop="0.0" SuppressIntercept="N" SuppressOutput="N" Terms="N" TwoFactor="N">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="NeuralNetwork" DESCRIPTION="Neural Network" DIAGRAMID="_ROOT_" ID="$6" PARENTID="" X="742.0" Y="151.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" Accelerate="1.2" AddHidden="Y" CodefileNoRes="" CodefileRes="" Component="NeuralNetwork" ConvDefaults="Y" Decelerate="0.5" DirectConnection="N" FConvTime="1.0" FConvValue="0.0" ForceRun="N" GConvTime="1.0" GConvValue="1.0E-6" Hidden="3.0" HiddenActivation="DEFAULT" HiddenBias="Y" HiddenCombFunction="DEFAULT" HiddenUnits="N" InitialDs="" InitialSeed="12345.0" InputStandardization="STD" Learn="0.1" MaxLearn="50.0" MaxMomentum="1.75" Maxiter="50.0" Maxtime="4 HOURS" MinLearn="1.0E-5" ModelSelectionCriterion="PROFIT/LOSS" Momentum="0.0" NetworkArchitecture="MLP" Outest="" Outfit="" Prelim="Y" PrelimMaxTime="1 HOUR" PrelimMaxiter="10.0" PrelimOutest="" PreliminaryRuns="5.0" RandDist="NORMAL" RandLoc="0.0" RandScale="1.0" Residuals="Y" RunAction="Train" Standardizations="N" SuppressOutput="N" TargetActivation="DEFAULT" TargetBias="Y" TargetCombFunction="DEFAULT" TargetError="DEFAULT" Tilt="0.0" TrainCode="" TrainingTechnique="DEFAULT" UseEstimates="N" WeightDecay="0.0">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Transform" DESCRIPTION="Transform Variables" DIAGRAMID="_ROOT_" ID="$7" PARENTID="" X="587.0" Y="267.0">
+<PROPERTIES Component="Transform" DefaultClassMethod="NONE" DefaultClassTargetMethod="NONE" DefaultMethod="MAX_NORM" DefaultTargetMethod="NONE" EmRandomSeed="12345.0" EmSampleMethod="FIRSTN" EmSampleSize="DEFAULT" ForceRun="N" GroupCutoff="0.1" GroupMissing="N" HideVariable="Y" MinOffset="Y" MissingAsLevel="N" MissingValue="USEINSEARCH" Offset="1.0" RejectVariable="Y" RunAction="Train" SummaryStatistics="Y" SummaryVariables="TRANSFORMED" UseMetaTransform="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<INTERACTION Type="DATA">
+<Data/>
+<Metadata/>
+</INTERACTION>
+<FORMULA Type="DATA">
+<Data/>
+<Metadata/>
+</FORMULA>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Regression" DESCRIPTION="Transformed Stepwise Regression" DIAGRAMID="_ROOT_" ID="$8" PARENTID="" X="737.0" Y="267.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" ClParm="N" Component="Regression" ConvDefaults="Y" CorB="N" CovB="N" Details="N" Error="LOGISTIC" ExcludedVariable="REJECT" FConvTimes="1.0" FConvValue="0.0" Force="0.0" ForceRun="N" GConvTimes="1.0" GConvValue="1.0E-6" Hierarchy="CLASS" InputCoding="DEVIATION" LinkFunction="LOGIT" MainEffect="Y" MaxCPUTime="1 HOUR" MaxFunctionCalls="NaN" MaxIterations="NaN" MaxStep="NaN" MinResourceUse="N" ModelDefaults="Y" ModelSelection="STEPWISE" OptimizationTechnique="DEFAULT" Performance="N" Polynomial="N" PolynomialDegree="2.0" PrintDesignMatrix="N" Rule="NONE" RunAction="Train" SASSPDS="N" SelectionCriterion="VDECDATA" SelectionDefault="Y" Sequential="N" Simple="N" SlEntry="0.05" SlStay="0.05" Start="0.0" StepOutput="N" Stop="0.0" SuppressIntercept="N" SuppressOutput="N" Terms="N" TwoFactor="N">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Transform" DESCRIPTION="Bucket Inut Variables" DIAGRAMID="_ROOT_" ID="$9" PARENTID="" X="582.0" Y="337.0">
+<PROPERTIES Component="Transform" DefaultClassMethod="NONE" DefaultClassTargetMethod="NONE" DefaultMethod="BUCKET" DefaultTargetMethod="NONE" EmRandomSeed="12345.0" EmSampleMethod="FIRSTN" EmSampleSize="DEFAULT" ForceRun="N" GroupCutoff="0.1" GroupMissing="N" HideVariable="Y" MinOffset="Y" MissingAsLevel="N" MissingValue="USEINSEARCH" Offset="1.0" RejectVariable="Y" RunAction="Train" SummaryStatistics="Y" SummaryVariables="TRANSFORMED" UseMetaTransform="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<INTERACTION Type="DATA">
+<Data/>
+<Metadata/>
+</INTERACTION>
+<FORMULA Type="DATA">
+<Data/>
+<Metadata/>
+</FORMULA>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Regression" DESCRIPTION="Bucket Stepwise Regression" DIAGRAMID="_ROOT_" ID="$10" PARENTID="" X="736.0" Y="337.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" ClParm="N" Component="Regression" ConvDefaults="Y" CorB="N" CovB="N" Details="N" Error="LOGISTIC" ExcludedVariable="REJECT" FConvTimes="1.0" FConvValue="0.0" Force="0.0" ForceRun="N" GConvTimes="1.0" GConvValue="1.0E-6" Hierarchy="CLASS" InputCoding="DEVIATION" LinkFunction="LOGIT" MainEffect="Y" MaxCPUTime="1 HOUR" MaxFunctionCalls="NaN" MaxIterations="NaN" MaxStep="NaN" MinResourceUse="N" ModelDefaults="Y" ModelSelection="STEPWISE" OptimizationTechnique="DEFAULT" Performance="N" Polynomial="N" PolynomialDegree="2.0" PrintDesignMatrix="N" Rule="NONE" RunAction="Train" SASSPDS="N" SelectionCriterion="VDECDATA" SelectionDefault="Y" Sequential="N" Simple="N" SlEntry="0.05" SlStay="0.05" Start="0.0" StepOutput="N" Stop="0.0" SuppressIntercept="N" SuppressOutput="N" Terms="N" TwoFactor="N">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Transform" DESCRIPTION="Quantile Input Variables" DIAGRAMID="_ROOT_" ID="$11" PARENTID="" X="584.0" Y="411.0">
+<PROPERTIES Component="Transform" DefaultClassMethod="NONE" DefaultClassTargetMethod="NONE" DefaultMethod="QUANTILE" DefaultTargetMethod="NONE" EmRandomSeed="12345.0" EmSampleMethod="FIRSTN" EmSampleSize="DEFAULT" ForceRun="N" GroupCutoff="0.1" GroupMissing="N" HideVariable="Y" MinOffset="Y" MissingAsLevel="N" MissingValue="USEINSEARCH" Offset="1.0" RejectVariable="Y" RunAction="Train" SummaryStatistics="Y" SummaryVariables="TRANSFORMED" UseMetaTransform="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<INTERACTION Type="DATA">
+<Data/>
+<Metadata/>
+</INTERACTION>
+<FORMULA Type="DATA">
+<Data/>
+<Metadata/>
+</FORMULA>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Regression" DESCRIPTION="Quantile Stepwise Regression" DIAGRAMID="_ROOT_" ID="$12" PARENTID="" X="737.0" Y="411.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" ClParm="N" Component="Regression" ConvDefaults="Y" CorB="N" CovB="N" Details="N" Error="LOGISTIC" ExcludedVariable="REJECT" FConvTimes="1.0" FConvValue="0.0" Force="0.0" ForceRun="N" GConvTimes="1.0" GConvValue="1.0E-6" Hierarchy="CLASS" InputCoding="DEVIATION" LinkFunction="LOGIT" MainEffect="Y" MaxCPUTime="1 HOUR" MaxFunctionCalls="NaN" MaxIterations="NaN" MaxStep="NaN" MinResourceUse="N" ModelDefaults="Y" ModelSelection="STEPWISE" OptimizationTechnique="DEFAULT" Performance="N" Polynomial="N" PolynomialDegree="2.0" PrintDesignMatrix="N" Rule="NONE" RunAction="Train" SASSPDS="N" SelectionCriterion="VDECDATA" SelectionDefault="Y" Sequential="N" Simple="N" SlEntry="0.05" SlStay="0.05" Start="0.0" StepOutput="N" Stop="0.0" SuppressIntercept="N" SuppressOutput="N" Terms="N" TwoFactor="N">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Transform" DESCRIPTION="Optimal Discretized Input Variables" DIAGRAMID="_ROOT_" ID="$13" PARENTID="" X="591.0" Y="486.0">
+<PROPERTIES Component="Transform" DefaultClassMethod="NONE" DefaultClassTargetMethod="NONE" DefaultMethod="OPTIMAL" DefaultTargetMethod="NONE" EmRandomSeed="12345.0" EmSampleMethod="FIRSTN" EmSampleSize="DEFAULT" ForceRun="N" GroupCutoff="0.1" GroupMissing="N" HideVariable="Y" MinOffset="Y" MissingAsLevel="N" MissingValue="USEINSEARCH" Offset="1.0" RejectVariable="Y" RunAction="Train" SummaryStatistics="Y" SummaryVariables="TRANSFORMED" UseMetaTransform="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<INTERACTION Type="DATA">
+<Data/>
+<Metadata/>
+</INTERACTION>
+<FORMULA Type="DATA">
+<Data/>
+<Metadata/>
+</FORMULA>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Regression" DESCRIPTION="Optima Discretized Stepwise Regression" DIAGRAMID="_ROOT_" ID="$14" PARENTID="" X="741.0" Y="486.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" ClParm="N" Component="Regression" ConvDefaults="Y" CorB="N" CovB="N" Details="N" Error="LOGISTIC" ExcludedVariable="REJECT" FConvTimes="1.0" FConvValue="0.0" Force="0.0" ForceRun="N" GConvTimes="1.0" GConvValue="1.0E-6" Hierarchy="CLASS" InputCoding="DEVIATION" LinkFunction="LOGIT" MainEffect="Y" MaxCPUTime="1 HOUR" MaxFunctionCalls="NaN" MaxIterations="NaN" MaxStep="NaN" MinResourceUse="N" ModelDefaults="Y" ModelSelection="STEPWISE" OptimizationTechnique="DEFAULT" Performance="N" Polynomial="N" PolynomialDegree="2.0" PrintDesignMatrix="N" Rule="NONE" RunAction="Train" SASSPDS="N" SelectionCriterion="VDECDATA" SelectionDefault="Y" Sequential="N" Simple="N" SlEntry="0.05" SlStay="0.05" Start="0.0" StepOutput="N" Stop="0.0" SuppressIntercept="N" SuppressOutput="N" Terms="N" TwoFactor="N">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="ModelCompare" DESCRIPTION="Model Comparison" DIAGRAMID="_ROOT_" ID="$15" PARENTID="" X="949.0" Y="242.0">
+<PROPERTIES AssessAllTargetLevels="N" Component="ModelCompare" DecileBin="20.0" ForceRun="N" LiftEpsilon="1.0E-6" ModelCriteria="Valid: Average Profit" ModelDescription="Regression" ModelId="Reg" NormalizeReportingVariables="Y" NumberOfReportedLevels="1.0E-6" NumberofBins="20.0" ProfitEpsilon="1.0E-6" RecomputeAssess="N" RocChart="Y" RocEpsilon="0.01" RoiEpsilon="1.0E-6" RunAction="Train" ScoreDistBin="20.0" SelectionCriteria="DEFAULT" SelectionDepth="10" SelectionTable="TRAIN" StatisticUsed="_VAPROF_" TargetName="TARGET">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="$1" TO="$3"/>
+<CONNECTION FROM="$1" TO="$2"/>
+<CONNECTION FROM="$3" TO="$4"/>
+<CONNECTION FROM="$4" TO="$13"/>
+<CONNECTION FROM="$4" TO="$11"/>
+<CONNECTION FROM="$4" TO="$9"/>
+<CONNECTION FROM="$4" TO="$7"/>
+<CONNECTION FROM="$4" TO="$5"/>
+<CONNECTION FROM="$5" TO="$15"/>
+<CONNECTION FROM="$5" TO="$6"/>
+<CONNECTION FROM="$6" TO="$15"/>
+<CONNECTION FROM="$7" TO="$8"/>
+<CONNECTION FROM="$8" TO="$15"/>
+<CONNECTION FROM="$9" TO="$10"/>
+<CONNECTION FROM="$10" TO="$15"/>
+<CONNECTION FROM="$11" TO="$12"/>
+<CONNECTION FROM="$12" TO="$15"/>
+<CONNECTION FROM="$13" TO="$14"/>
+<CONNECTION FROM="$14" TO="$15"/>
+</CONNECTIONS>
+<NOTES>
+</NOTES>
+</Workspace>

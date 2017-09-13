@@ -1,0 +1,1 @@
+Employee cut head when hit by a pallet.

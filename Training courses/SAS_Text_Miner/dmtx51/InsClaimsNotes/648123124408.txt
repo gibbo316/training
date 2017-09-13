@@ -1,0 +1,1 @@
+Caught left hand in counter stacker, worker should have turned machine off prior to reaching into machine.

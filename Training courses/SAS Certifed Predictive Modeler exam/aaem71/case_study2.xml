@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace>
+<NODES>
+<NODE COMPONENT="DataSource" DESCRIPTION="WEBSTATION" DIAGRAMID="_ROOT_" ID="$1" PARENTID="" X="56.0" Y="50.0">
+<PROPERTIES Component="DataSource" ComputeStatistics="N" DataSelection="DATASOURCE" DataSource="WEBSTATION" DataSourceRole="RAW" Description="" ForceRun="N" Library="AAEM61" NBytes="5.2007936E7" NCols="2.0" NObs="2234558.0" NewTable="" OutputType="VIEW" Role="TRANSACTION" RunAction="Train" Scope="LOCAL" Segment="" Table="WEBSTATION">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Association" DESCRIPTION="Association" DIAGRAMID="_ROOT_" ID="$2" PARENTID="" X="238.0" Y="51.0">
+<PROPERTIES AssocSupportType="PERCENT" ChainCount="3.0" Component="Association" ConsolTime="0.0" Criterion="DEFAULT" ExportIdRule="N" ForceRun="N" ItemCount="4.0" MaxDur="NaN" MaxItems="3000000.0" MinConf="10.0" NumRules="200.0" NumTransposeRules="200.0" PctsupA="1.0" PctsupS="2.0" RunAction="Train" SeqSupportType="PERCENT" SupportA="NaN" SupportS="NaN">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<RULESFILTER Type="DATA">
+<Data/>
+<Metadata/>
+</RULESFILTER>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="$1" TO="$2"/>
+</CONNECTIONS>
+<NOTES>
+</NOTES>
+</Workspace>

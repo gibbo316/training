@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace>
+<NODES>
+<NODE COMPONENT="DataSource" DESCRIPTION="PVA97NK" DIAGRAMID="_ROOT_" ID="$1" PARENTID="" X="66.0" Y="165.0">
+<PROPERTIES ApplyIntervalLevelLowerLimit="Y" ApplyMaxClassLevels="Y" ApplyMaxPercentMissing="Y" Component="DataSource" ComputeStatistics="N" DataSelection="DATASOURCE" DataSource="PVANK" DataSourceRole="RAW" Description="" ForceRun="N" IdentifyEmptyColumns="Y" IntervalLowerLimit="20.0" Library="AAEM61" MaxClassLevels="20.0" MaxPercentMissing="50.0" MetaAdvisor="BASIC" NBytes="2049024.0" NCols="28.0" NObs="9686.0" NewTable="" NewVariableRole="REJECT" OutputType="VIEW" Role="RAW" RunAction="Train" Scope="LOCAL" Segment="" Table="PVA97NK" VariableValidation="STRICT">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA AttributeName="LEVEL" AttributeValue="BINARY" Variable="DemHomeOwner"/>
+<DELTA AttributeName="LEVEL" AttributeValue="BINARY" Variable="StatusCatStarAll"/>
+<DELTA AttributeName="LEVEL" AttributeValue="BINARY" Variable="TargetB"/>
+<DELTA AttributeName="ROLE" AttributeValue="REJECTED" Variable="TargetD"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Replace" DESCRIPTION="Replacement" DIAGRAMID="_ROOT_" ID="$2" PARENTID="" X="264.0" Y="165.0">
+<PROPERTIES CalcMethod="NONE" Catalog="SASHELP.EMMDFY.REPLACE.SOURCE" Component="Replace" CountReport="Y" DataNeeded="Y" Extension="" ForceRun="N" HideVariable="N" IntervalEditor="" IntervalMethod="NONE" Location="CATALOG" MADSCutoff="9.0" NotesFile="D:\EMProjects\test1\Workspaces\EMWS\Repl\EMNOTES.txt" PercentsCutoff="0.5" ReplaceMethod="MISSING" ReplacementEditor="" RunAction="Train" SpacingsCutoff="9.0" StddevCutoff="3.0" UnknownLevel="NONE">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA AttributeName="CALCMETHOD" AttributeValue="MANUAL" Variable="DemMedIncome"/>
+<DELTA AttributeName="INTERVALMIN" AttributeValue="1.0" Variable="DemMedIncome"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Extension="sas" Type="EXTERNAL">
+<Data/>
+</USERTRAINCODE>
+<NEWVALUES Type="DATA">
+<Data>
+<Obs LEVEL="_UNKNOWN_" NAME="DemCluster" REPLACE_VALUE="_DEFAULT_" TYPE="C"/>
+<Obs LEVEL="_UNKNOWN_" NAME="DemGender" REPLACE_VALUE="_DEFAULT_" TYPE="C"/>
+<Obs LEVEL="_UNKNOWN_" NAME="DemHomeOwner" REPLACE_VALUE="_DEFAULT_" TYPE="C"/>
+<Obs LEVEL="_UNKNOWN_" NAME="StatusCat96NK" REPLACE_VALUE="_DEFAULT_" TYPE="C"/>
+<Obs LEVEL="_UNKNOWN_" NAME="StatusCatStarAll" REPLACE_VALUE="_DEFAULT_" TYPE="N"/>
+<Obs LEVEL="_UNKNOWN_" NAME="TargetB" REPLACE_VALUE="_DEFAULT_" TYPE="N"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="Name" TYPE="C"/>
+<Variable FORMAT="" LABEL="Formatted Value" LENGTH="12" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Replacement Value" LENGTH="200" NAME="REPLACE_VALUE" TYPE="C"/>
+</Metadata>
+</NEWVALUES>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Partition" DESCRIPTION="Data Partition" DIAGRAMID="_ROOT_" ID="$3" PARENTID="" X="462.0" Y="165.0">
+<PROPERTIES ClassDistribution="Y" Component="Partition" ForceRun="N" IntervalDistribution="Y" Method="DEFAULT" OutputType="DATA" RandomSeed="12345.0" RunAction="Train" TestPct="0.0" TrainPct="50.0" ValidatePct="50.0">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="DecisionTree" DESCRIPTION="Decision Tree" DIAGRAMID="_ROOT_" ID="$4" PARENTID="" X="660.0" Y="165.0">
+<PROPERTIES AssessMeasure="PROFIT/LOSS" AssessPercentage="0.25" CV="N" CVNIter="10.0" CVRepeat="1.0" CVSeed="12345.0" Component="DecisionTree" Criterion="DEFAULT" Depth="Y" Dummy="N" Exhaustive="5000.0" ForceRun="N" Freeze="N" Inputs="N" IntervalCriterion="PROBF" Kass="Y" KassApply="BEFORE" LeafSize="5.0" Leafid="Y" Maxbranch="2.0" Maxdepth="6.0" MinCatSize="5.0" MissingValue="USEINSEARCH" NSubtree="1.0" NodeRole="SEGMENT" NodeSample="20000.0" NominalCriterion="PROBCHISQ" Nrules="5.0" Nsurrs="0.0" NumInputs="1.0" NumSingleImp="5.0" ObsImportance="N" OrdinalCriterion="ENTROPY" Performance="DISK" Predict="Y" RunAction="Train" SigLevel="0.2" Splitsize="NaN" Subtree="ASSESSMENT" TrainMode="BATCH" UseDecision="N" UseMultipleTarget="N" UsePriors="N" UseVarOnce="N" VarSelection="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<TargetB>
+<DecData Table="EMWS.Tree2_TargetB_DD">
+<Data>
+<Obs COUNT="2421.0" DATAPRIOR="0.4998967582" DECISION1="1.0" DECISION2="0.0" DECPRIOR="NaN" TARGETB="1" TRAINPRIOR="0.4998967582"/>
+<Obs COUNT="2422.0" DATAPRIOR="0.5001032418" DECISION1="0.0" DECISION2="1.0" DECPRIOR="NaN" TARGETB="0" TRAINPRIOR="0.5001032418"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="" LENGTH="32" NAME="TargetB" TYPE="C"/>
+<Variable FORMAT="" LABEL="Level Counts" LENGTH="8" NAME="COUNT" TYPE="N"/>
+<Variable FORMAT="" LABEL="Data Proportions" LENGTH="8" NAME="DATAPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Training Proportions" LENGTH="8" NAME="TRAINPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Decision Priors" LENGTH="8" NAME="DECPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="1" LENGTH="8" NAME="DECISION1" TYPE="N"/>
+<Variable FORMAT="" LABEL="0" LENGTH="8" NAME="DECISION2" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS.Tree2_TargetB_DM">
+<Data>
+<Obs COST="" EVENT="" FORMAT="" LABEL="" LEVEL="PROFIT" ORDER="" TYPE="" USE="N" VARIABLE="" _TYPE_="MATRIX"/>
+<Obs COST="" EVENT="1" FORMAT="" LABEL="Target Gift Flag" LEVEL="BINARY" ORDER="" TYPE="N" USE="" VARIABLE="TargetB" _TYPE_="TARGET"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="1" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION1" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="0" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION2" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Data Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DATAPRIOR" _TYPE_="DATAPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Training Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="TRAINPRIOR" _TYPE_="TRAINPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Decision Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DECPRIOR" _TYPE_="DECPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetB=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetB1" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetB=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetB1" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetB=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetB0" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetB=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetB0" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="From: TargetB" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="F_TargetB" _TYPE_="FROM"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Into: TargetB" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="I_TargetB" _TYPE_="INTO"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Type" LENGTH="32" NAME="_TYPE_" TYPE="C"/>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="VARIABLE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Label" LENGTH="40" NAME="LABEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Measurement Level" LENGTH="32" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Target Event" LENGTH="32" NAME="EVENT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Order" LENGTH="10" NAME="ORDER" TYPE="C"/>
+<Variable FORMAT="" LABEL="Format" LENGTH="32" NAME="FORMAT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Cost" LENGTH="32" NAME="COST" TYPE="C"/>
+<Variable FORMAT="" LABEL="Use" LENGTH="1" NAME="USE" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</TargetB>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="DecisionTree" DESCRIPTION="Prob tree" DIAGRAMID="_ROOT_" ID="$5" PARENTID="" X="660.0" Y="66.0">
+<PROPERTIES AssessMeasure="ASE" AssessPercentage="0.25" CV="N" CVNIter="10.0" CVRepeat="1.0" CVSeed="12345.0" Component="DecisionTree" Criterion="DEFAULT" Depth="Y" Dummy="N" Exhaustive="5000.0" ForceRun="N" Freeze="N" Inputs="N" IntervalCriterion="PROBF" Kass="Y" KassApply="BEFORE" LeafSize="5.0" Leafid="Y" Maxbranch="2.0" Maxdepth="6.0" MinCatSize="5.0" MissingValue="USEINSEARCH" NSubtree="1.0" NodeRole="SEGMENT" NodeSample="20000.0" NominalCriterion="PROBCHISQ" Nrules="5.0" Nsurrs="0.0" NumInputs="1.0" NumSingleImp="5.0" ObsImportance="N" OrdinalCriterion="ENTROPY" Performance="DISK" Predict="Y" RunAction="Train" SigLevel="0.2" Splitsize="NaN" Subtree="ASSESSMENT" TrainMode="BATCH" UseDecision="N" UseMultipleTarget="N" UsePriors="N" UseVarOnce="N" VarSelection="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<TargetB>
+<DecData Table="EMWS.Tree3_TargetB_DD">
+<Data>
+<Obs COUNT="2421.0" DATAPRIOR="0.4998967582" DECISION1="1.0" DECISION2="0.0" DECPRIOR="NaN" TARGETB="1" TRAINPRIOR="0.4998967582"/>
+<Obs COUNT="2422.0" DATAPRIOR="0.5001032418" DECISION1="0.0" DECISION2="1.0" DECPRIOR="NaN" TARGETB="0" TRAINPRIOR="0.5001032418"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="" LENGTH="32" NAME="TargetB" TYPE="C"/>
+<Variable FORMAT="" LABEL="Level Counts" LENGTH="8" NAME="COUNT" TYPE="N"/>
+<Variable FORMAT="" LABEL="Data Proportions" LENGTH="8" NAME="DATAPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Training Proportions" LENGTH="8" NAME="TRAINPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Decision Priors" LENGTH="8" NAME="DECPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="1" LENGTH="8" NAME="DECISION1" TYPE="N"/>
+<Variable FORMAT="" LABEL="0" LENGTH="8" NAME="DECISION2" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS.Tree3_TargetB_DM">
+<Data>
+<Obs COST="" EVENT="" FORMAT="" LABEL="" LEVEL="PROFIT" ORDER="" TYPE="" USE="N" VARIABLE="" _TYPE_="MATRIX"/>
+<Obs COST="" EVENT="1" FORMAT="" LABEL="Target Gift Flag" LEVEL="BINARY" ORDER="" TYPE="N" USE="" VARIABLE="TargetB" _TYPE_="TARGET"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="1" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION1" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="0" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION2" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Data Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DATAPRIOR" _TYPE_="DATAPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Training Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="TRAINPRIOR" _TYPE_="TRAINPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Decision Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DECPRIOR" _TYPE_="DECPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetB=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetB1" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetB=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetB1" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetB=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetB0" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetB=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetB0" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="From: TargetB" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="F_TargetB" _TYPE_="FROM"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Into: TargetB" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="I_TargetB" _TYPE_="INTO"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Type" LENGTH="32" NAME="_TYPE_" TYPE="C"/>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="VARIABLE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Label" LENGTH="40" NAME="LABEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Measurement Level" LENGTH="32" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Target Event" LENGTH="32" NAME="EVENT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Order" LENGTH="10" NAME="ORDER" TYPE="C"/>
+<Variable FORMAT="" LABEL="Format" LENGTH="32" NAME="FORMAT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Cost" LENGTH="32" NAME="COST" TYPE="C"/>
+<Variable FORMAT="" LABEL="Use" LENGTH="1" NAME="USE" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</TargetB>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Impute" DESCRIPTION="Impute" DIAGRAMID="_ROOT_" ID="$6" PARENTID="" X="1056.0" Y="264.0">
+<PROPERTIES ABWTuning="9.0" AHUBERTuning="1.5" AWAVETuning="6.2831853072" Component="Impute" DefaultChar="" DefaultNum="NaN" DistributionMissing="N" ForceRun="N" HideVariable="Y" ImputeNoMissing="N" Indicator="UNIQUE" IndicatorRole="INPUT" IndicatorSource="IMPUTED" LeafSize="5.0" MaxPctMissing="50.0" Maxbranch="2.0" Maxdepth="6.0" MethodClass="COUNT" MethodInterval="MEAN" MethodTargetClass="NONE" MethodTargetInterval="NONE" MinCatSize="5.0" Normalize="Y" Nrules="5.0" Nsurrs="2.0" RandomSeed="12345.0" ReplaceVariable="N" RunAction="Train" SpacingProportion="90.0" Splitsize="NaN" ValidateTestMissing="N">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Regression" DESCRIPTION="Regression" DIAGRAMID="_ROOT_" ID="$7" PARENTID="" X="1254.0" Y="165.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" ClParm="N" Component="Regression" ConvDefaults="Y" CorB="N" CovB="N" Details="N" Error="LOGISTIC" ExcludedVariable="REJECT" FConvTimes="1.0" FConvValue="0.0" Force="0.0" ForceRun="N" GConvTimes="1.0" GConvValue="1.0E-6" Hierarchy="CLASS" InputCoding="DEVIATION" LinkFunction="LOGIT" MainEffect="Y" MaxCPUTime="1 HOUR" MaxFunctionCalls="NaN" MaxIterations="NaN" MaxStep="NaN" MinResourceUse="N" ModelDefaults="Y" ModelSelection="STEPWISE" OptimizationTechnique="DEFAULT" Performance="N" Polynomial="N" PolynomialDegree="2.0" PrintDesignMatrix="N" Rule="NONE" RunAction="Train" SASSPDS="N" SelectionCriterion="VERROR" SelectionDefault="N" Sequential="N" Simple="N" SlEntry="1.0" SlStay="0.5" Start="0.0" StepOutput="N" Stop="0.0" SuppressIntercept="N" SuppressOutput="N" Terms="N" TwoFactor="N">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<TargetB>
+<DecData Table="EMWS.Reg_TargetB_DD">
+<Data>
+<Obs COUNT="2421.0" DATAPRIOR="0.4998967582" DECISION1="1.0" DECISION2="0.0" DECPRIOR="NaN" TARGETB="1" TRAINPRIOR="49.989675821"/>
+<Obs COUNT="2422.0" DATAPRIOR="0.5001032418" DECISION1="0.0" DECISION2="1.0" DECPRIOR="NaN" TARGETB="0" TRAINPRIOR="50.010324179"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="" LENGTH="32" NAME="TargetB" TYPE="C"/>
+<Variable FORMAT="" LABEL="Level Counts" LENGTH="8" NAME="COUNT" TYPE="N"/>
+<Variable FORMAT="" LABEL="Data Proportions" LENGTH="8" NAME="DATAPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Training Proportions" LENGTH="8" NAME="TRAINPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Decision Priors" LENGTH="8" NAME="DECPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="1" LENGTH="8" NAME="DECISION1" TYPE="N"/>
+<Variable FORMAT="" LABEL="0" LENGTH="8" NAME="DECISION2" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS.Reg_TargetB_DM">
+<Data>
+<Obs COST="" EVENT="" FORMAT="" LABEL="" LEVEL="PROFIT" ORDER="" TYPE="" USE="N" VARIABLE="" _TYPE_="MATRIX"/>
+<Obs COST="" EVENT="1" FORMAT="" LABEL="Target Gift Flag" LEVEL="BINARY" ORDER="" TYPE="N" USE="" VARIABLE="TargetB" _TYPE_="TARGET"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="1" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION1" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="0" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION2" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Data Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DATAPRIOR" _TYPE_="DATAPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Training Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="TRAINPRIOR" _TYPE_="TRAINPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Decision Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DECPRIOR" _TYPE_="DECPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetB=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetB1" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetB=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetB1" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetB=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetB0" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetB=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetB0" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="From: TargetB" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="F_TargetB" _TYPE_="FROM"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Into: TargetB" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="I_TargetB" _TYPE_="INTO"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Type" LENGTH="32" NAME="_TYPE_" TYPE="C"/>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="VARIABLE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Label" LENGTH="40" NAME="LABEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Measurement Level" LENGTH="32" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Target Event" LENGTH="32" NAME="EVENT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Order" LENGTH="10" NAME="ORDER" TYPE="C"/>
+<Variable FORMAT="" LABEL="Format" LENGTH="32" NAME="FORMAT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Cost" LENGTH="32" NAME="COST" TYPE="C"/>
+<Variable FORMAT="" LABEL="Use" LENGTH="1" NAME="USE" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</TargetB>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Transform" DESCRIPTION="Transform Variables" DIAGRAMID="_ROOT_" ID="$8" PARENTID="" X="660.0" Y="264.0">
+<PROPERTIES Component="Transform" DefaultClassMethod="NONE" DefaultClassTargetMethod="NONE" DefaultMethod="NONE" DefaultTargetMethod="NONE" EmRandomSeed="12345.0" EmSampleMethod="FIRSTN" EmSampleSize="DEFAULT" ForceRun="N" GroupCutoff="0.1" GroupMissing="N" HideVariable="Y" MinOffset="Y" MissingAsLevel="N" MissingValue="USEINSEARCH" NumberofBins="VARIABLES" Offset="1.0" RejectVariable="Y" RunAction="Train" SummaryStatistics="Y" SummaryVariables="TRANSFORMED" UseMetaTransform="Y">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA AttributeName="METHOD" AttributeValue="LOG" Variable="GiftAvg36"/>
+<DELTA AttributeName="METHOD" AttributeValue="LOG" Variable="GiftAvgAll"/>
+<DELTA AttributeName="METHOD" AttributeValue="LOG" Variable="GiftAvgCard36"/>
+<DELTA AttributeName="METHOD" AttributeValue="LOG" Variable="GiftAvgLast"/>
+<DELTA AttributeName="METHOD" AttributeValue="LOG" Variable="GiftCnt36"/>
+<DELTA AttributeName="METHOD" AttributeValue="LOG" Variable="GiftCntAll"/>
+<DELTA AttributeName="METHOD" AttributeValue="LOG" Variable="GiftCntCard36"/>
+<DELTA AttributeName="METHOD" AttributeValue="LOG" Variable="GiftCntCardAll"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<INTERACTION Type="DATA">
+<Data/>
+<Metadata/>
+</INTERACTION>
+<FORMULA Type="DATA">
+<Data/>
+<Metadata/>
+</FORMULA>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Replace" DESCRIPTION="Replacement  (2)" DIAGRAMID="_ROOT_" ID="$9" PARENTID="" X="858.0" Y="264.0">
+<PROPERTIES CalcMethod="NONE" Catalog="SASHELP.EMMDFY.REPLACE.SOURCE" Component="Replace" CountReport="Y" DataNeeded="Y" Extension="" ForceRun="N" HideVariable="N" IntervalEditor="" IntervalMethod="NONE" Location="CATALOG" MADSCutoff="9.0" NotesFile="D:\EMProjects\test1\Workspaces\EMWS\Repl2\EMNOTES.txt" PercentsCutoff="0.5" ReplaceMethod="COMPUTED" ReplacementEditor="" RunAction="Train" SpacingsCutoff="9.0" StddevCutoff="3.0" UnknownLevel="NONE">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Extension="sas" Type="EXTERNAL">
+<Data/>
+</USERTRAINCODE>
+<NEWVALUES Type="DATA">
+<Data>
+<Obs LEVEL="_UNKNOWN_" NAME="DemCluster" REPLACE_VALUE="_DEFAULT_" TYPE="C"/>
+<Obs LEVEL="_UNKNOWN_" NAME="DemGender" REPLACE_VALUE="_DEFAULT_" TYPE="C"/>
+<Obs LEVEL="_UNKNOWN_" NAME="DemHomeOwner" REPLACE_VALUE="_DEFAULT_" TYPE="C"/>
+<Obs LEVEL="A" NAME="StatusCat96NK" REPLACE_VALUE="A" TYPE="C"/>
+<Obs LEVEL="S" NAME="StatusCat96NK" REPLACE_VALUE="A" TYPE="C"/>
+<Obs LEVEL="F" NAME="StatusCat96NK" REPLACE_VALUE="N" TYPE="C"/>
+<Obs LEVEL="N" NAME="StatusCat96NK" REPLACE_VALUE="N" TYPE="C"/>
+<Obs LEVEL="E" NAME="StatusCat96NK" REPLACE_VALUE="L" TYPE="C"/>
+<Obs LEVEL="L" NAME="StatusCat96NK" REPLACE_VALUE="L" TYPE="C"/>
+<Obs LEVEL="_UNKNOWN_" NAME="StatusCat96NK" REPLACE_VALUE="_DEFAULT_" TYPE="C"/>
+<Obs LEVEL="_UNKNOWN_" NAME="StatusCatStarAll" REPLACE_VALUE="_DEFAULT_" TYPE="N"/>
+<Obs LEVEL="_UNKNOWN_" NAME="TargetB" REPLACE_VALUE="_DEFAULT_" TYPE="N"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="Name" TYPE="C"/>
+<Variable FORMAT="" LABEL="Formatted Value" LENGTH="12" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Replacement Value" LENGTH="200" NAME="REPLACE_VALUE" TYPE="C"/>
+</Metadata>
+</NEWVALUES>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Regression" DESCRIPTION="polyreg" DIAGRAMID="_ROOT_" ID="$10" PARENTID="" X="1254.0" Y="264.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" ClParm="N" Component="Regression" ConvDefaults="Y" CorB="N" CovB="N" Details="N" Error="LOGISTIC" ExcludedVariable="REJECT" FConvTimes="1.0" FConvValue="0.0" Force="0.0" ForceRun="N" GConvTimes="1.0" GConvValue="1.0E-6" Hierarchy="CLASS" InputCoding="DEVIATION" LinkFunction="LOGIT" MainEffect="Y" MaxCPUTime="1 HOUR" MaxFunctionCalls="NaN" MaxIterations="NaN" MaxStep="NaN" MinResourceUse="N" ModelDefaults="Y" ModelSelection="STEPWISE" OptimizationTechnique="DEFAULT" Performance="N" Polynomial="Y" PolynomialDegree="2.0" PrintDesignMatrix="N" Rule="NONE" RunAction="Train" SASSPDS="N" SelectionCriterion="VERROR" SelectionDefault="N" Sequential="N" Simple="N" SlEntry="1.0" SlStay="0.5" Start="0.0" StepOutput="N" Stop="0.0" SuppressIntercept="N" SuppressOutput="N" Terms="N" TwoFactor="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<TargetB>
+<DecData Table="EMWS.Reg2_TargetB_DD">
+<Data>
+<Obs COUNT="2421.0" DATAPRIOR="0.4998967582" DECISION1="1.0" DECISION2="0.0" DECPRIOR="NaN" TARGETB="1" TRAINPRIOR="49.989675821"/>
+<Obs COUNT="2422.0" DATAPRIOR="0.5001032418" DECISION1="0.0" DECISION2="1.0" DECPRIOR="NaN" TARGETB="0" TRAINPRIOR="50.010324179"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="" LENGTH="32" NAME="TargetB" TYPE="C"/>
+<Variable FORMAT="" LABEL="Level Counts" LENGTH="8" NAME="COUNT" TYPE="N"/>
+<Variable FORMAT="" LABEL="Data Proportions" LENGTH="8" NAME="DATAPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Training Proportions" LENGTH="8" NAME="TRAINPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Decision Priors" LENGTH="8" NAME="DECPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="1" LENGTH="8" NAME="DECISION1" TYPE="N"/>
+<Variable FORMAT="" LABEL="0" LENGTH="8" NAME="DECISION2" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS.Reg2_TargetB_DM">
+<Data>
+<Obs COST="" EVENT="" FORMAT="" LABEL="" LEVEL="PROFIT" ORDER="" TYPE="" USE="N" VARIABLE="" _TYPE_="MATRIX"/>
+<Obs COST="" EVENT="1" FORMAT="" LABEL="Target Gift Flag" LEVEL="BINARY" ORDER="" TYPE="N" USE="" VARIABLE="TargetB" _TYPE_="TARGET"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="1" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION1" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="0" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION2" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Data Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DATAPRIOR" _TYPE_="DATAPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Training Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="TRAINPRIOR" _TYPE_="TRAINPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Decision Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DECPRIOR" _TYPE_="DECPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetB=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetB1" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetB=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetB1" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetB=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetB0" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetB=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetB0" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="From: TargetB" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="F_TargetB" _TYPE_="FROM"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Into: TargetB" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="I_TargetB" _TYPE_="INTO"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Type" LENGTH="32" NAME="_TYPE_" TYPE="C"/>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="VARIABLE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Label" LENGTH="40" NAME="LABEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Measurement Level" LENGTH="32" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Target Event" LENGTH="32" NAME="EVENT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Order" LENGTH="10" NAME="ORDER" TYPE="C"/>
+<Variable FORMAT="" LABEL="Format" LENGTH="32" NAME="FORMAT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Cost" LENGTH="32" NAME="COST" TYPE="C"/>
+<Variable FORMAT="" LABEL="Use" LENGTH="1" NAME="USE" TYPE="C"/>
+</Metadata>
+</DecMeta>
+<IntData Table="EMWS.Reg2_TargetBINTERAC">
+<Data>
+<Obs KEY="0.0" VARIABLE="DemMedHomeValue"/>
+<Obs KEY="0.0" VARIABLE="GiftTimeLast"/>
+<Obs KEY="1.0" VARIABLE="DemMedHomeValue"/>
+<Obs KEY="1.0" VARIABLE="DemMedHomeValue"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="" LENGTH="8" NAME="KEY" TYPE="N"/>
+<Variable FORMAT="" LABEL="" LENGTH="32" NAME="VARIABLE" TYPE="C"/>
+</Metadata>
+</IntData>
+</TargetB>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="NeuralNetwork" DESCRIPTION="Neural Network" DIAGRAMID="_ROOT_" ID="$11" PARENTID="" X="1452.0" Y="165.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" Accelerate="1.2" AddHidden="Y" CodefileNoRes="" CodefileRes="" Component="NeuralNetwork" ConvDefaults="Y" Decelerate="0.5" DirectConnection="N" FConvTime="1.0" FConvValue="0.0" ForceRun="N" GConvTime="1.0" GConvValue="1.0E-6" Hidden="3.0" HiddenActivation="DEFAULT" HiddenBias="Y" HiddenCombFunction="DEFAULT" HiddenUnits="N" InitialDs="" InitialSeed="12345.0" InputStandardization="STD" Learn="0.1" MaxLearn="50.0" MaxMomentum="1.75" Maxiter="100.0" Maxtime="4 HOURS" MinLearn="1.0E-5" ModelSelectionCriterion="PROFIT/LOSS" Momentum="0.0" NetworkArchitecture="MLP" Outest="" Outfit="" Prelim="N" PrelimMaxTime="1 HOUR" PrelimMaxiter="10.0" PrelimOutest="" PreliminaryRuns="5.0" RandDist="NORMAL" RandLoc="0.0" RandScale="1.0" Residuals="Y" RunAction="Train" Standardizations="N" SuppressOutput="N" TargetActivation="DEFAULT" TargetBias="Y" TargetCombFunction="DEFAULT" TargetError="DEFAULT" Tilt="0.0" TrainCode="" TrainingTechnique="DEFAULT" UseEstimates="N" WeightDecay="0.0">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="$1" TO="$2"/>
+<CONNECTION FROM="$2" TO="$3"/>
+<CONNECTION FROM="$3" TO="$8"/>
+<CONNECTION FROM="$3" TO="$5"/>
+<CONNECTION FROM="$3" TO="$4"/>
+<CONNECTION FROM="$6" TO="$10"/>
+<CONNECTION FROM="$6" TO="$7"/>
+<CONNECTION FROM="$7" TO="$11"/>
+<CONNECTION FROM="$8" TO="$9"/>
+<CONNECTION FROM="$9" TO="$6"/>
+</CONNECTIONS>
+<NOTES>
+</NOTES>
+</Workspace>

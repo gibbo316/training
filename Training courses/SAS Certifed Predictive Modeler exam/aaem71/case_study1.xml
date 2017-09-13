@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace>
+<NODES>
+<NODE COMPONENT="DataSource" DESCRIPTION="PROFILE" DIAGRAMID="_ROOT_" ID="$1" PARENTID="" X="42.0" Y="172.0">
+<PROPERTIES Component="DataSource" ComputeStatistics="N" DataSelection="DATASOURCE" DataSource="PROFILE" DataSourceRole="RAW" Description="" ForceRun="N" Library="AAEM61" NBytes="5653504.0" NCols="6.0" NObs="100000.0" NewTable="" OutputType="VIEW" Role="RAW" RunAction="Train" Scope="LOCAL" Segment="" Table="PROFILE">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="StatExplore" DESCRIPTION="StatExplore" DIAGRAMID="_ROOT_" ID="$2" PARENTID="" X="194.0" Y="287.0">
+<PROPERTIES BySegment="N" ChiSquare="Y" ChiSquareInterval="N" ChiSquareIntervalNBins="5.0" Component="StatExplore" Correlation="Y" ForceRun="N" HideVariable="Y" MaximumVars="1000.0" NObs="100000" Pearson="Y" RunAction="Train" Spearman="N" UseScore="N" UseTest="" UseValidate="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<CROSSTAB Type="DATA">
+<Data/>
+<Metadata/>
+</CROSSTAB>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Transform" DESCRIPTION="Transform Variables" DIAGRAMID="_ROOT_" ID="$3" PARENTID="" X="223.0" Y="172.0">
+<PROPERTIES Component="Transform" DefaultClassMethod="NONE" DefaultClassTargetMethod="NONE" DefaultMethod="NONE" DefaultTargetMethod="NONE" EmRandomSeed="12345.0" EmSampleMethod="FIRSTN" EmSampleSize="DEFAULT" ForceRun="N" GroupCutoff="0.1" GroupMissing="N" HideVariable="Y" MinOffset="Y" MissingAsLevel="N" MissingValue="USEINSEARCH" Offset="1.0" RejectVariable="Y" RunAction="Train" SummaryStatistics="Y" SummaryVariables="TRANSFORMED" UseMetaTransform="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<INTERACTION Type="DATA">
+<Data/>
+<Metadata/>
+</INTERACTION>
+<FORMULA Type="DATA">
+<Data>
+<Obs FORMAT="" FORMULA="log(CNT_TBM/(CNT_TOT-CNT_TBM))" KURTOSIS="NaN" LABEL="" LENGTH="30.0" LEVEL="INTERVAL" MAX="NaN" MEAN="NaN" MIN="NaN" NAME="LGT_TBM" NLEVEL="NaN" NMISS="NaN" REPORT="N" ROLE="INPUT" SKEWNESS="NaN" STD="NaN" TYPE="N"/>
+<Obs FORMAT="" FORMULA="log(CNT_ATM/(CNT_TOT-CNT_ATM))" KURTOSIS="NaN" LABEL="" LENGTH="30.0" LEVEL="INTERVAL" MAX="NaN" MEAN="NaN" MIN="NaN" NAME="LGT_ATM" NLEVEL="NaN" NMISS="NaN" REPORT="N" ROLE="INPUT" SKEWNESS="NaN" STD="NaN" TYPE="N"/>
+<Obs FORMAT="" FORMULA="log(CNT_POS/(CNT_TOT - CNT_POS))" KURTOSIS="NaN" LABEL="" LENGTH="32.0" LEVEL="INTERVAL" MAX="NaN" MEAN="NaN" MIN="NaN" NAME="LGT_POS" NLEVEL="NaN" NMISS="NaN" REPORT="N" ROLE="INPUT" SKEWNESS="NaN" STD="NaN" TYPE="N"/>
+<Obs FORMAT="" FORMULA="log(CNT_CSC/(CNT_TOT-CNT_CSC))" KURTOSIS="NaN" LABEL="" LENGTH="30.0" LEVEL="INTERVAL" MAX="NaN" MEAN="NaN" MIN="NaN" NAME="LGT_CSC" NLEVEL="NaN" NMISS="NaN" REPORT="N" ROLE="INPUT" SKEWNESS="NaN" STD="NaN" TYPE="N"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Variable Name" LENGTH="32" NAME="Name" TYPE="C"/>
+<Variable FORMAT="" LABEL="Formula" LENGTH="300" NAME="Formula" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="Type" TYPE="C"/>
+<Variable FORMAT="" LABEL="Length" LENGTH="8" NAME="Length" TYPE="N"/>
+<Variable FORMAT="" LABEL="Format" LENGTH="20" NAME="Format" TYPE="C"/>
+<Variable FORMAT="" LABEL="Role" LENGTH="32" NAME="Role" TYPE="C"/>
+<Variable FORMAT="" LABEL="Measurement Level" LENGTH="10" NAME="Level" TYPE="C"/>
+<Variable FORMAT="" LABEL="Report" LENGTH="1" NAME="Report" TYPE="C"/>
+<Variable FORMAT="" LABEL="Label" LENGTH="200" NAME="Label" TYPE="C"/>
+<Variable FORMAT="" LABEL="Number of Levels" LENGTH="8" NAME="nlevel" TYPE="N"/>
+<Variable FORMAT="" LABEL="Missing" LENGTH="8" NAME="nmiss" TYPE="N"/>
+<Variable FORMAT="" LABEL="Minimum" LENGTH="8" NAME="min" TYPE="N"/>
+<Variable FORMAT="" LABEL="Maximum" LENGTH="8" NAME="max" TYPE="N"/>
+<Variable FORMAT="" LABEL="Mean" LENGTH="8" NAME="mean" TYPE="N"/>
+<Variable FORMAT="" LABEL="Standard Deviation" LENGTH="8" NAME="std" TYPE="N"/>
+<Variable FORMAT="" LABEL="Skewness" LENGTH="8" NAME="skewness" TYPE="N"/>
+<Variable FORMAT="" LABEL="Kurtosis" LENGTH="8" NAME="kurtosis" TYPE="N"/>
+</Metadata>
+</FORMULA>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Cluster" DESCRIPTION="Cluster" DIAGRAMID="_ROOT_" ID="$4" PARENTID="" X="421.0" Y="172.0">
+<PROPERTIES AutomaticMaxNum="50.0" AutomaticMethod="WARD" AutomaticMinNum="2.0" Bins="100.0" CCCCutOff="3.0" ClusterGraphs="Y" Clusvar="_SEGMENT_" ClusvarLabel="Segment Variable" ClusvarRole="SEGMENT" Component="Cluster" DistancePlot="Y" Drift="N" FinalMaxNum="20.0" ForceRun="N" HideVariable="Y" ImputationMethod="NONE" Initial="DEFAULT" Learn="NaN" LearnFinal="0.02" LearnInitial="0.5" LearnSteps="1000.0" MaxC="5.0" MaxIter="10.0" MaxSteps="1200.0" MissingInterval="DEFAULT" MissingNominal="DEFAULT" MissingOrdinal="DEFAULT" NominalEncoding="GLM" NumberClusterMethod="USER" OrdinalEncoding="RANK" Radius="0.0" RunAction="Train" Stdize="NONE" Summary="N" TrainDefaults="Y" TreeProfile="Y" XConv="1.0E-4">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA AttributeName="USE" AttributeValue="N" Variable="CNT_ATM"/>
+<DELTA AttributeName="USE" AttributeValue="N" Variable="CNT_CSC"/>
+<DELTA AttributeName="USE" AttributeValue="N" Variable="CNT_POS"/>
+<DELTA AttributeName="USE" AttributeValue="N" Variable="CNT_TBM"/>
+<DELTA AttributeName="USE" AttributeValue="N" Variable="CNT_TOT"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Profile" DESCRIPTION="Segment Profile" DIAGRAMID="_ROOT_" ID="$5" PARENTID="" X="608.0" Y="172.0">
+<PROPERTIES Catalog="SASHELP.EMEXPL.PROFILE.SOURCE" Component="Profile" DataNeeded="Y" Extension="" ForceRun="N" Location="CATALOG" MaxDepth="1" MaxNumInput="10" MaxNumReport="10" MinWorth="0.01" NotesFile="" NumHistBars="8" OtherPercentCutOff="95" PrintWorth="Y" ProfileAll="N" RunAction="Train" TargetRole="NONE" UseReportVars="Y" VariableSet="">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA AttributeName="USE" AttributeValue="N" Variable="CNT_ATM"/>
+<DELTA AttributeName="USE" AttributeValue="N" Variable="CNT_CSC"/>
+<DELTA AttributeName="USE" AttributeValue="N" Variable="CNT_POS"/>
+<DELTA AttributeName="USE" AttributeValue="N" Variable="CNT_TBM"/>
+<DELTA AttributeName="USE" AttributeValue="N" Variable="CNT_TOT"/>
+<DELTA AttributeName="USE" AttributeValue="Y" Variable="LGT_ATM"/>
+<DELTA AttributeName="USE" AttributeValue="Y" Variable="LGT_CSC"/>
+<DELTA AttributeName="USE" AttributeValue="Y" Variable="LGT_POS"/>
+<DELTA AttributeName="USE" AttributeValue="Y" Variable="LGT_TBM"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Extension="sas" Type="EXTERNAL">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Score" DESCRIPTION="Score" DIAGRAMID="_ROOT_" ID="$6" PARENTID="" X="614.0" Y="81.0">
+<PROPERTIES CScore="Y" Component="Score" FixedOutputNames="Y" ForceRun="N" HideAssess="Y" HideClassification="Y" HideFreq="Y" HideInput="Y" HideOther="Y" HidePredict="Y" HideRejected="Y" HideResidual="Y" HideTarget="Y" HideVariables="N" JScore="Y" OptimizedCode="Y" OutputType="VIEW" PackageName="DEFAULT" PreferenceName="" RunAction="Train" ScoreTest="N" ScoreValidate="N" UserPackageName="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="$1" TO="$2"/>
+<CONNECTION FROM="$1" TO="$3"/>
+<CONNECTION FROM="$3" TO="$4"/>
+<CONNECTION FROM="$4" TO="$5"/>
+<CONNECTION FROM="$4" TO="$6"/>
+</CONNECTIONS>
+<NOTES>
+</NOTES>
+</Workspace>

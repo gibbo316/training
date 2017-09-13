@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace>
+<NODES>
+<NODE COMPONENT="DataSource" DESCRIPTION="ORGANICS" DIAGRAMID="_ROOT_" ID="$1" PARENTID="" X="66.0" Y="165.0">
+<PROPERTIES ApplyIntervalLevelLowerLimit="Y" ApplyMaxClassLevels="Y" ApplyMaxPercentMissing="Y" Component="DataSource" ComputeStatistics="N" DataSelection="DATASOURCE" DataSource="ORGANICS" DataSourceRole="RAW" Description="" ForceRun="N" IdentifyEmptyColumns="Y" IntervalLowerLimit="20.0" Library="AAEM61" MaxClassLevels="20.0" MaxPercentMissing="50.0" MetaAdvisor="BASIC" NBytes="2171904.0" NCols="13.0" NObs="22223.0" NewTable="" NewVariableRole="REJECT" OutputType="VIEW" Role="RAW" RunAction="Train" Scope="LOCAL" Segment="" Table="ORGANICS" VariableValidation="STRICT">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA AttributeName="ROLE" AttributeValue="REJECTED" Variable="DemCluster"/>
+<DELTA AttributeName="ROLE" AttributeValue="REJECTED" Variable="TargetAmt"/>
+<DELTA AttributeName="LEVEL" AttributeValue="BINARY" Variable="TargetBuy"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Partition" DESCRIPTION="Data Partition" DIAGRAMID="_ROOT_" ID="$2" PARENTID="" X="264.0" Y="165.0">
+<PROPERTIES ClassDistribution="Y" Component="Partition" ForceRun="N" IntervalDistribution="Y" Method="DEFAULT" OutputType="DATA" RandomSeed="12345.0" RunAction="Train" TestPct="0.0" TrainPct="50.0" ValidatePct="50.0">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="DecisionTree" DESCRIPTION="Decision Tree" DIAGRAMID="_ROOT_" ID="$3" PARENTID="" X="462.0" Y="66.0">
+<PROPERTIES AssessMeasure="ASE" AssessPercentage="0.25" CV="N" CVNIter="10.0" CVRepeat="1.0" CVSeed="12345.0" Component="DecisionTree" Criterion="DEFAULT" Depth="Y" Dummy="N" Exhaustive="5000.0" ForceRun="N" Freeze="N" Inputs="N" IntervalCriterion="PROBF" Kass="Y" KassApply="BEFORE" LeafSize="5.0" Leafid="Y" Maxbranch="2.0" Maxdepth="6.0" MinCatSize="5.0" MissingValue="USEINSEARCH" NSubtree="1.0" NodeRole="SEGMENT" NodeSample="20000.0" NominalCriterion="PROBCHISQ" Nrules="5.0" Nsurrs="0.0" NumInputs="1.0" NumSingleImp="5.0" ObsImportance="N" OrdinalCriterion="ENTROPY" Performance="DISK" Predict="Y" RunAction="Train" SigLevel="0.2" Splitsize="NaN" Subtree="ASSESSMENT" TrainMode="BATCH" UseDecision="N" UseMultipleTarget="N" UsePriors="N" UseVarOnce="N" VarSelection="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<TargetBuy>
+<DecData Table="EMWS1.Tree_TargetBuy_DD">
+<Data>
+<Obs COUNT="2753.0" DATAPRIOR="0.24775018" DECISION1="1.0" DECISION2="0.0" DECPRIOR="NaN" TARGETBUY="1" TRAINPRIOR="24.775017999"/>
+<Obs COUNT="8359.0" DATAPRIOR="0.75224982" DECISION1="0.0" DECISION2="1.0" DECPRIOR="NaN" TARGETBUY="0" TRAINPRIOR="75.224982001"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="" LENGTH="32" NAME="TargetBuy" TYPE="C"/>
+<Variable FORMAT="" LABEL="Level Counts" LENGTH="8" NAME="COUNT" TYPE="N"/>
+<Variable FORMAT="" LABEL="Data Proportions" LENGTH="8" NAME="DATAPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Training Proportions" LENGTH="8" NAME="TRAINPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Decision Priors" LENGTH="8" NAME="DECPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="1" LENGTH="8" NAME="DECISION1" TYPE="N"/>
+<Variable FORMAT="" LABEL="0" LENGTH="8" NAME="DECISION2" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Tree_TargetBuy_DM">
+<Data>
+<Obs COST="" EVENT="" FORMAT="" LABEL="" LEVEL="PROFIT" ORDER="" TYPE="" USE="N" VARIABLE="" _TYPE_="MATRIX"/>
+<Obs COST="" EVENT="1" FORMAT="" LABEL="Organics Purchase Indicator" LEVEL="BINARY" ORDER="" TYPE="N" USE="" VARIABLE="TargetBuy" _TYPE_="TARGET"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="1" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION1" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="0" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION2" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Data Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DATAPRIOR" _TYPE_="DATAPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Training Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="TRAINPRIOR" _TYPE_="TRAINPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Decision Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DECPRIOR" _TYPE_="DECPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetBuy=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetBuy1" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetBuy=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetBuy1" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetBuy=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetBuy0" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetBuy=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetBuy0" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="From: TargetBuy" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="F_TargetBuy" _TYPE_="FROM"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Into: TargetBuy" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="I_TargetBuy" _TYPE_="INTO"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Type" LENGTH="32" NAME="_TYPE_" TYPE="C"/>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="VARIABLE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Label" LENGTH="40" NAME="LABEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Measurement Level" LENGTH="32" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Target Event" LENGTH="32" NAME="EVENT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Order" LENGTH="10" NAME="ORDER" TYPE="C"/>
+<Variable FORMAT="" LABEL="Format" LENGTH="32" NAME="FORMAT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Cost" LENGTH="32" NAME="COST" TYPE="C"/>
+<Variable FORMAT="" LABEL="Use" LENGTH="1" NAME="USE" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</TargetBuy>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="DecisionTree" DESCRIPTION="Decision Tree (2)" DIAGRAMID="_ROOT_" ID="$4" PARENTID="" X="462.0" Y="264.0">
+<PROPERTIES AssessMeasure="ASE" AssessPercentage="0.25" CV="N" CVNIter="10.0" CVRepeat="1.0" CVSeed="12345.0" Component="DecisionTree" Criterion="DEFAULT" Depth="Y" Dummy="N" Exhaustive="5000.0" ForceRun="N" Freeze="N" Inputs="N" IntervalCriterion="PROBF" Kass="Y" KassApply="BEFORE" LeafSize="5.0" Leafid="Y" Maxbranch="3.0" Maxdepth="6.0" MinCatSize="5.0" MissingValue="USEINSEARCH" NSubtree="1.0" NodeRole="SEGMENT" NodeSample="20000.0" NominalCriterion="PROBCHISQ" Nrules="5.0" Nsurrs="0.0" NumInputs="1.0" NumSingleImp="5.0" ObsImportance="N" OrdinalCriterion="ENTROPY" Performance="DISK" Predict="Y" RunAction="Train" SigLevel="0.2" Splitsize="NaN" Subtree="ASSESSMENT" TrainMode="BATCH" UseDecision="N" UseMultipleTarget="N" UsePriors="N" UseVarOnce="N" VarSelection="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<TargetBuy>
+<DecData Table="EMWS1.Tree2_TargetBuy_DD">
+<Data>
+<Obs COUNT="2753.0" DATAPRIOR="0.24775018" DECISION1="1.0" DECISION2="0.0" DECPRIOR="NaN" TARGETBUY="1" TRAINPRIOR="0.24775018"/>
+<Obs COUNT="8359.0" DATAPRIOR="0.75224982" DECISION1="0.0" DECISION2="1.0" DECPRIOR="NaN" TARGETBUY="0" TRAINPRIOR="0.75224982"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="" LENGTH="32" NAME="TargetBuy" TYPE="C"/>
+<Variable FORMAT="" LABEL="Level Counts" LENGTH="8" NAME="COUNT" TYPE="N"/>
+<Variable FORMAT="" LABEL="Data Proportions" LENGTH="8" NAME="DATAPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Training Proportions" LENGTH="8" NAME="TRAINPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Decision Priors" LENGTH="8" NAME="DECPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="1" LENGTH="8" NAME="DECISION1" TYPE="N"/>
+<Variable FORMAT="" LABEL="0" LENGTH="8" NAME="DECISION2" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Tree2_TargetBuy_DM">
+<Data>
+<Obs COST="" EVENT="" FORMAT="" LABEL="" LEVEL="PROFIT" ORDER="" TYPE="" USE="N" VARIABLE="" _TYPE_="MATRIX"/>
+<Obs COST="" EVENT="1" FORMAT="" LABEL="Organics Purchase Indicator" LEVEL="BINARY" ORDER="" TYPE="N" USE="" VARIABLE="TargetBuy" _TYPE_="TARGET"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="1" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION1" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="0" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION2" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Data Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DATAPRIOR" _TYPE_="DATAPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Training Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="TRAINPRIOR" _TYPE_="TRAINPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Decision Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DECPRIOR" _TYPE_="DECPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetBuy=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetBuy1" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetBuy=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetBuy1" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetBuy=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetBuy0" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetBuy=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetBuy0" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="From: TargetBuy" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="F_TargetBuy" _TYPE_="FROM"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Into: TargetBuy" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="I_TargetBuy" _TYPE_="INTO"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Type" LENGTH="32" NAME="_TYPE_" TYPE="C"/>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="VARIABLE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Label" LENGTH="40" NAME="LABEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Measurement Level" LENGTH="32" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Target Event" LENGTH="32" NAME="EVENT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Order" LENGTH="10" NAME="ORDER" TYPE="C"/>
+<Variable FORMAT="" LABEL="Format" LENGTH="32" NAME="FORMAT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Cost" LENGTH="32" NAME="COST" TYPE="C"/>
+<Variable FORMAT="" LABEL="Use" LENGTH="1" NAME="USE" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</TargetBuy>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="StatExplore" DESCRIPTION="StatExplore" DIAGRAMID="_ROOT_" ID="$5" PARENTID="" X="264.0" Y="264.0">
+<PROPERTIES BySegment="N" ChiSquare="Y" ChiSquareInterval="N" ChiSquareIntervalNBins="5.0" Component="StatExplore" Correlation="Y" ForceRun="N" HideVariable="Y" MaximumVars="1000.0" NObs="100000" Pearson="Y" RunAction="Train" Spearman="N" UseScore="N" UseTest="" UseValidate="">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<CROSSTAB Type="DATA">
+<Data/>
+<Metadata/>
+</CROSSTAB>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Impute" DESCRIPTION="Impute" DIAGRAMID="_ROOT_" ID="$6" PARENTID="" X="660.0" Y="165.0">
+<PROPERTIES ABWTuning="9.0" AHUBERTuning="1.5" AWAVETuning="6.2831853072" Component="Impute" DefaultChar="U" DefaultNum="NaN" DistributionMissing="N" ForceRun="N" HideVariable="Y" ImputeNoMissing="N" Indicator="UNIQUE" IndicatorRole="INPUT" IndicatorSource="IMPUTED" LeafSize="5.0" MaxPctMissing="50.0" Maxbranch="2.0" Maxdepth="6.0" MethodClass="CONSTANT" MethodInterval="MEAN" MethodTargetClass="NONE" MethodTargetInterval="NONE" MinCatSize="5.0" Normalize="Y" Nrules="5.0" Nsurrs="2.0" RandomSeed="12345.0" ReplaceVariable="N" RunAction="Train" SpacingProportion="90.0" Splitsize="NaN" ValidateTestMissing="N">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Regression" DESCRIPTION="Regression" DIAGRAMID="_ROOT_" ID="$7" PARENTID="" X="858.0" Y="99.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" ClParm="N" Component="Regression" ConvDefaults="Y" CorB="N" CovB="N" Details="N" Error="LOGISTIC" ExcludedVariable="REJECT" FConvTimes="1.0" FConvValue="0.0" Force="0.0" ForceRun="N" GConvTimes="1.0" GConvValue="1.0E-6" Hierarchy="CLASS" InputCoding="DEVIATION" LinkFunction="LOGIT" MainEffect="Y" MaxCPUTime="1 HOUR" MaxFunctionCalls="NaN" MaxIterations="NaN" MaxStep="NaN" MinResourceUse="N" ModelDefaults="Y" ModelSelection="STEPWISE" OptimizationTechnique="DEFAULT" Performance="N" Polynomial="N" PolynomialDegree="2.0" PrintDesignMatrix="N" Rule="NONE" RunAction="Train" SASSPDS="N" SelectionCriterion="VERROR" SelectionDefault="Y" Sequential="N" Simple="N" SlEntry="0.05" SlStay="0.05" Start="0.0" StepOutput="N" Stop="0.0" SuppressIntercept="N" SuppressOutput="N" Terms="N" TwoFactor="N">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<TargetBuy>
+<DecData Table="EMWS1.Reg_TargetBuy_DD">
+<Data>
+<Obs COUNT="2753.0" DATAPRIOR="0.24775018" DECISION1="1.0" DECISION2="0.0" DECPRIOR="NaN" TARGETBUY="1" TRAINPRIOR="24.775017999"/>
+<Obs COUNT="8359.0" DATAPRIOR="0.75224982" DECISION1="0.0" DECISION2="1.0" DECPRIOR="NaN" TARGETBUY="0" TRAINPRIOR="75.224982001"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="" LENGTH="32" NAME="TargetBuy" TYPE="C"/>
+<Variable FORMAT="" LABEL="Level Counts" LENGTH="8" NAME="COUNT" TYPE="N"/>
+<Variable FORMAT="" LABEL="Data Proportions" LENGTH="8" NAME="DATAPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Training Proportions" LENGTH="8" NAME="TRAINPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Decision Priors" LENGTH="8" NAME="DECPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="1" LENGTH="8" NAME="DECISION1" TYPE="N"/>
+<Variable FORMAT="" LABEL="0" LENGTH="8" NAME="DECISION2" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Reg_TargetBuy_DM">
+<Data>
+<Obs COST="" EVENT="" FORMAT="" LABEL="" LEVEL="PROFIT" ORDER="" TYPE="" USE="N" VARIABLE="" _TYPE_="MATRIX"/>
+<Obs COST="" EVENT="1" FORMAT="" LABEL="Organics Purchase Indicator" LEVEL="BINARY" ORDER="" TYPE="N" USE="" VARIABLE="TargetBuy" _TYPE_="TARGET"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="1" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION1" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="0" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION2" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Data Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DATAPRIOR" _TYPE_="DATAPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Training Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="TRAINPRIOR" _TYPE_="TRAINPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Decision Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DECPRIOR" _TYPE_="DECPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetBuy=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetBuy1" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetBuy=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetBuy1" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetBuy=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetBuy0" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetBuy=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetBuy0" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="From: TargetBuy" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="F_TargetBuy" _TYPE_="FROM"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Into: TargetBuy" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="I_TargetBuy" _TYPE_="INTO"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Type" LENGTH="32" NAME="_TYPE_" TYPE="C"/>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="VARIABLE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Label" LENGTH="40" NAME="LABEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Measurement Level" LENGTH="32" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Target Event" LENGTH="32" NAME="EVENT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Order" LENGTH="10" NAME="ORDER" TYPE="C"/>
+<Variable FORMAT="" LABEL="Format" LENGTH="32" NAME="FORMAT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Cost" LENGTH="32" NAME="COST" TYPE="C"/>
+<Variable FORMAT="" LABEL="Use" LENGTH="1" NAME="USE" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</TargetBuy>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Transform" DESCRIPTION="Transform Variables" DIAGRAMID="_ROOT_" ID="$8" PARENTID="" X="462.0" Y="165.0">
+<PROPERTIES Component="Transform" DefaultClassMethod="NONE" DefaultClassTargetMethod="NONE" DefaultMethod="NONE" DefaultTargetMethod="NONE" EmRandomSeed="12345.0" EmSampleMethod="FIRSTN" EmSampleSize="DEFAULT" ForceRun="N" GroupCutoff="0.1" GroupMissing="N" HideVariable="Y" MinOffset="Y" MissingAsLevel="N" MissingValue="USEINSEARCH" NumberofBins="VARIABLES" Offset="1.0" RejectVariable="Y" RunAction="Train" SummaryStatistics="Y" SummaryVariables="TRANSFORMED" UseMetaTransform="Y">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA AttributeName="METHOD" AttributeValue="LOG" Variable="DemAffl"/>
+<DELTA AttributeName="METHOD" AttributeValue="LOG" Variable="PromTime"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<INTERACTION Type="DATA">
+<Data/>
+<Metadata/>
+</INTERACTION>
+<FORMULA Type="DATA">
+<Data/>
+<Metadata/>
+</FORMULA>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE COMPONENT="Regression" DESCRIPTION="poly_reg" DIAGRAMID="_ROOT_" ID="$9" PARENTID="" X="858.0" Y="198.0">
+<PROPERTIES AbsConvValue="-1.34078E154" AbsFTime="1.0" AbsFValue="0.0" AbsGTime="1.0" AbsGValue="1.0E-5" AbsXTime="1.0" AbsXValue="1.0E-8" ClParm="N" Component="Regression" ConvDefaults="Y" CorB="N" CovB="N" Details="N" Error="LOGISTIC" ExcludedVariable="REJECT" FConvTimes="1.0" FConvValue="0.0" Force="0.0" ForceRun="N" GConvTimes="1.0" GConvValue="1.0E-6" Hierarchy="CLASS" InputCoding="DEVIATION" LinkFunction="LOGIT" MainEffect="Y" MaxCPUTime="1 HOUR" MaxFunctionCalls="NaN" MaxIterations="NaN" MaxStep="NaN" MinResourceUse="N" ModelDefaults="Y" ModelSelection="STEPWISE" OptimizationTechnique="DEFAULT" Performance="N" Polynomial="Y" PolynomialDegree="2.0" PrintDesignMatrix="N" Rule="NONE" RunAction="Train" SASSPDS="N" SelectionCriterion="VERROR" SelectionDefault="Y" Sequential="N" Simple="N" SlEntry="0.05" SlStay="0.05" Start="0.0" StepOutput="N" Stop="0.0" SuppressIntercept="N" SuppressOutput="N" Terms="N" TwoFactor="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<TargetBuy>
+<DecData Table="EMWS1.Reg2_TargetBuy_DD">
+<Data>
+<Obs COUNT="2753.0" DATAPRIOR="0.24775018" DECISION1="1.0" DECISION2="0.0" DECPRIOR="NaN" TARGETBUY="1" TRAINPRIOR="0.24775018"/>
+<Obs COUNT="8359.0" DATAPRIOR="0.75224982" DECISION1="0.0" DECISION2="1.0" DECPRIOR="NaN" TARGETBUY="0" TRAINPRIOR="0.75224982"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="" LENGTH="32" NAME="TargetBuy" TYPE="C"/>
+<Variable FORMAT="" LABEL="Level Counts" LENGTH="8" NAME="COUNT" TYPE="N"/>
+<Variable FORMAT="" LABEL="Data Proportions" LENGTH="8" NAME="DATAPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Training Proportions" LENGTH="8" NAME="TRAINPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="Decision Priors" LENGTH="8" NAME="DECPRIOR" TYPE="N"/>
+<Variable FORMAT="" LABEL="1" LENGTH="8" NAME="DECISION1" TYPE="N"/>
+<Variable FORMAT="" LABEL="0" LENGTH="8" NAME="DECISION2" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Reg2_TargetBuy_DM">
+<Data>
+<Obs COST="" EVENT="" FORMAT="" LABEL="" LEVEL="PROFIT" ORDER="" TYPE="" USE="N" VARIABLE="" _TYPE_="MATRIX"/>
+<Obs COST="" EVENT="1" FORMAT="" LABEL="Organics Purchase Indicator" LEVEL="BINARY" ORDER="" TYPE="N" USE="" VARIABLE="TargetBuy" _TYPE_="TARGET"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="1" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION1" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="0" LEVEL="" ORDER="" TYPE="N" USE="Y" VARIABLE="DECISION2" _TYPE_="DECISION"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Data Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DATAPRIOR" _TYPE_="DATAPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Training Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="TRAINPRIOR" _TYPE_="TRAINPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Decision Prior" LEVEL="" ORDER="" TYPE="N" USE="N" VARIABLE="DECPRIOR" _TYPE_="DECPRIOR"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetBuy=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetBuy1" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetBuy=1" LEVEL="1" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetBuy1" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Predicted: TargetBuy=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="P_TargetBuy0" _TYPE_="PREDICTED"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Residual: TargetBuy=0" LEVEL="0" ORDER="" TYPE="N" USE="" VARIABLE="R_TargetBuy0" _TYPE_="RESIDUAL"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="From: TargetBuy" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="F_TargetBuy" _TYPE_="FROM"/>
+<Obs COST="" EVENT="" FORMAT="" LABEL="Into: TargetBuy" LEVEL="" ORDER="" TYPE="C" USE="" VARIABLE="I_TargetBuy" _TYPE_="INTO"/>
+</Data>
+<Metadata>
+<Variable FORMAT="" LABEL="Type" LENGTH="32" NAME="_TYPE_" TYPE="C"/>
+<Variable FORMAT="" LABEL="Variable" LENGTH="32" NAME="VARIABLE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Label" LENGTH="40" NAME="LABEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Measurement Level" LENGTH="32" NAME="LEVEL" TYPE="C"/>
+<Variable FORMAT="" LABEL="Target Event" LENGTH="32" NAME="EVENT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Order" LENGTH="10" NAME="ORDER" TYPE="C"/>
+<Variable FORMAT="" LABEL="Format" LENGTH="32" NAME="FORMAT" TYPE="C"/>
+<Variable FORMAT="" LABEL="Type" LENGTH="1" NAME="TYPE" TYPE="C"/>
+<Variable FORMAT="" LABEL="Cost" LENGTH="32" NAME="COST" TYPE="C"/>
+<Variable FORMAT="" LABEL="Use" LENGTH="1" NAME="USE" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</TargetBuy>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Extension="txt" Type="EXTERNAL">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="$1" TO="$5"/>
+<CONNECTION FROM="$1" TO="$2"/>
+<CONNECTION FROM="$2" TO="$8"/>
+<CONNECTION FROM="$2" TO="$4"/>
+<CONNECTION FROM="$2" TO="$3"/>
+<CONNECTION FROM="$6" TO="$9"/>
+<CONNECTION FROM="$6" TO="$7"/>
+<CONNECTION FROM="$8" TO="$6"/>
+</CONNECTIONS>
+<NOTES> 
+</NOTES>
+</Workspace>
